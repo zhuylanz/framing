@@ -3,6 +3,9 @@
 <head>
 	<title>Framing Test Site</title>
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -13,44 +16,122 @@
 	</nav>
 	<div class="jumbotron">
 		<h1 class="display-3">Input</h1>
-		<ul class="nav nav-tabs">
-			<li class="nav-item">
-				<a class="nav-link active show" data-toggle="tab" href="#home">Home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#profile">Profile</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link disabled" href="#">Disabled</a>
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-				<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 42px, 0px);">
-					<a class="dropdown-item" href="#">Action</a>
-					<a class="dropdown-item" href="#">Another action</a>
-					<a class="dropdown-item" href="#">Something else here</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Separated link</a>
+		<!-- <form method="post" action="/upload" encType="multipart/form-data"> -->
+			<div class="form-group">
+				<div class="input-group mb-3">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="file-photo" name="photo">
+						<label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+					</div>
+					<div class="input-group-append">
+						<input id="upload" class="input-group-text" type="submit" value="Upload">
+					</div>
 				</div>
-			</li>
-		</ul>
-		<div id="myTabContent" class="tab-content">
-			<div class="tab-pane fade active show" id="home">
+			</div>
+			<!-- </form> -->
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link active show" data-toggle="tab" href="#frame-tab">Frame</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#mat-tab">Mat</a>
+				</li>
+			</ul>
+			<div class="tab-content">
 				<br>
-				<button type="button" class="btn btn-primary">Frame 1</button>
-				<button type="button" class="btn btn-primary">Frame 2</button>
-				<button type="button" class="btn btn-primary">Frame 3</button>
-			</div>
-			<div class="tab-pane fade" id="profile">
-				<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-			</div>
-			<div class="tab-pane fade" id="dropdown1">
-				<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-			</div>
-			<div class="tab-pane fade" id="dropdown2">
-				<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
+				<div id="frame-tab" class="tab-pane fade active show">
+					<div class="form-group">
+						<label class="col-form-label col-form-label-sm" for="inputSmall">Width</label>
+						<input value="2" id="frame-width" class="form-control form-control-sm" type="text" placeholder="2cm">
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="frame-rad1" type="radio" value="1" name="frameRadio" class="frame-rad custom-control-input">
+						<label class="custom-control-label" for="frame-rad1">#1</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="frame-rad2" type="radio" value="2" name="frameRadio" class="frame-rad custom-control-input">
+						<label class="custom-control-label" for="frame-rad2">#2</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="frame-rad3" type="radio" value="3" name="frameRadio" class="frame-rad custom-control-input">
+						<label class="custom-control-label" for="frame-rad3">#3</label>
+					</div>
+				</div>
+				<div id="mat-tab" class="tab-pane fade">
+					<div class="form-group">
+						<label class="col-form-label col-form-label-sm" for="inputSmall">Width</label>
+						<input value="1" id="mat-width" class="form-control form-control-sm" type="text" placeholder="1cm">
+					</div>			
+					<div class="custom-control custom-radio">
+						<input id="mat-rad1" type="radio" value="1" name="matRadio" class="mat-rad custom-control-input">
+						<label class="custom-control-label" for="mat-rad1">#1</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="mat-rad2" type="radio" value="2" name="matRadio" class="mat-rad custom-control-input">
+						<label class="custom-control-label" for="mat-rad2">#2</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="mat-rad3" type="radio" value="3" name="matRadio" class="mat-rad custom-control-input">
+						<label class="custom-control-label" for="mat-rad3">#3</label>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</body>
-</html>
+
+		<div style="width: 80%; margin: auto">
+			Preview
+			<img src="out.png" style="width: 100%">
+		</div>
+
+		<script>
+			$('#upload').on('click', () => {
+				var fileToUpload = new FormData();    
+				fileToUpload.append('photo', $('#file-photo')[0].files[0]);
+
+				$.ajax({
+					method: 'POST',
+					url: '/upload',
+					data: fileToUpload,
+					processData: false,
+					contentType: false,
+					success: function(data) {
+						console.log('upload ok');
+						var d = new Date();
+						$("img").attr("src", "/origin.png?"+d.getTime());
+					},
+				});
+			});
+
+			let getframe = function() {
+				$('.frame-rad').unbind('click');
+				$('.mat-rad').unbind('click');
+				
+				let frame_id = $('.frame-rad:checked').attr('value');
+				let frame_width = $('#frame-width').val()*28;
+				let mat_id = $('.mat-rad:checked').attr('value');
+				let mat_width = $('#mat-width').val()*28;
+
+				$.ajax({
+					method: 'GET',
+					url: '/getframe',
+					data: {
+						frame_id: frame_id,
+						frame_width: frame_width,
+						mat_id: mat_id,
+						mat_width: mat_width
+					},
+					success: function(data) {
+						console.log(data);
+						var d = new Date();
+						$("img").attr("src", "/out.png?"+d.getTime());
+						$('.frame-rad').click(getframe);
+						$('.mat-rad').click(getframe);
+					},
+				});
+			}
+
+			$('.frame-rad').click(getframe);
+			$('.mat-rad').click(getframe);
+		</script>
+	</body>
+	</html>
